@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja" xmlns="http://www.w3.org/1999/html">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8">
         <script src="js/bootstrap.js"></script>
@@ -14,7 +14,7 @@
             <p>
                 <a class="btn btn-primary btn-block btn-lg" href="/">ここから</a>
             </p>
-            <form>
+            <form th:method="post">
                 <input class="form-control input-lg" type="text" name="from" />
                 <button class="btn btn-default btn-block btn-lg" type="submit">そこから</button>
             </form>
