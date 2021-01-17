@@ -21,6 +21,9 @@ public class Lunch {
 
     @PostMapping("/roulett")
     public String from(ModelMap modelMap, @RequestParam("from") String name){
+        if (name.isBlank()){
+            return "index";
+        }
         modelMap.addAttribute("from", name);
         return "roulett";
     }
