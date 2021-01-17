@@ -14,11 +14,11 @@ public class Lunch {
 
     @GetMapping("/here")
     public String here(){
-        return "index";
+        return "roulett";
     }
 
     @PostMapping
     public String from(){
-        return "index";
+        return "roulett";
     }
 }
