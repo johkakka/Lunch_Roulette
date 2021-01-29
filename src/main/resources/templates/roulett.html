@@ -10,14 +10,6 @@
 </head>
 <body>
 <h1>飯どうするーれっと</h1>
-<div class="container">
-    <p>
-        <a class="btn btn-primary btn-block btn-lg" href="/">ここから</a>
-    </p>
-    <form th:action="roulett" th:method="post">
-        <input class="form-control input-lg" type="text" name="from"/>
-        <button class="btn btn-default btn-block btn-lg" type="submit">そこから</button>
-    </form>
-</div>
+<h1><span th:text="${from}"></span>から</h1>
 </body>
 </html>
