@@ -35,13 +35,22 @@ public class Lunch {
 
         List<String> lines = new ArrayList<>();
         try {
-            lines = Files.lines(Paths.get("/internal"), StandardCharsets.UTF_8).collect(Collectors.toList());
+            lines = Files.lines(Paths.get("internal"), StandardCharsets.UTF_8).collect(Collectors.toList());
         } catch (IOException e) {
             e.printStackTrace();
             String m = e.toString();
             modelMap.addAttribute("message", m);
             return "error";
         }
+
+        if (lines.isEmpty()){
+            String m = "APIキーが見つかりません";
+            modelMap.addAttribute("message", m);
+            return "error";
+        }
+
+        String geoUrl = "https://maps.googleapis.com/maps/api/geocode/json?address="+name+"&region=jp&key="+lines.get(0);
+
 
 
         modelMap.addAttribute("from", name);
