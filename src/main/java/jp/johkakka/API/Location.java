@@ -4,10 +4,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Location {
     @JsonProperty("lat")
-    String latString;
+    private String latString;
 
     @JsonProperty("lng")
-    String lngString;
+    private String lngString;
 
     public double getLat(){
         return Double.parseDouble(latString);
