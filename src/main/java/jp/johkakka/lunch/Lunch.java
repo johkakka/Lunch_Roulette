@@ -1,15 +1,17 @@
 package jp.johkakka.lunch;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import jp.johkakka.API.Geometry;
+import jp.johkakka.API.GeometryModel;
+import jp.johkakka.API.GeometryResult;
+import jp.johkakka.API.Location;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
@@ -56,19 +58,20 @@ public class Lunch {
 
         String geoUrlPath = "https://maps.googleapis.com/maps/api/geocode/json?address="+name+"&region=jp&key="+lines.get(0);
 
+        //Get from Geocoding API
         String geoJson = "";
-
+        double[] geoLoc = new double[]{Double.NaN, Double.NaN};
         try {
             URL geoUrl = new URL(geoUrlPath);
-            InputStream is = geoUrl.openStream();
-            InputStreamReader isr = new InputStreamReader(is, StandardCharsets.UTF_8);
-            BufferedReader br = new BufferedReader(isr);
 
-            String temp;
+            //to Java class
+            ObjectMapper objectMapper = new ObjectMapper();
+            GeometryModel model = objectMapper.readValue(geoUrl, GeometryModel.class);
 
-            while ((temp = br.readLine()) != null){
-                geoJson = geoJson + temp;
-            }
+            GeometryResult result = model.getTopResult();
+            Geometry geometry = result.getGeometry();
+            Location location = geometry.getLocation();
+            geoLoc = location.get();
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -78,7 +81,7 @@ public class Lunch {
         }
 
 
-        modelMap.addAttribute("from", name);
+        modelMap.addAttribute("from", geoLoc[0]);
         return "roulett";
     }
 }
