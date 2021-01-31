@@ -4,5 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties (ignoreUnknown = true)
 public class GeometryResult {
-    Geometry geometry;
+    private Geometry geometry;
+
+    public Geometry getGeometry() {
+        return geometry;
+    }
 }
