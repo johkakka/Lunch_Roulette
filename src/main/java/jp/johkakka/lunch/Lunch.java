@@ -1,10 +1,7 @@
 package jp.johkakka.lunch;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import jp.johkakka.API.Geometry;
 import jp.johkakka.API.GeometryModel;
-import jp.johkakka.API.GeometryResult;
-import jp.johkakka.API.Location;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,12 +26,12 @@ public class Lunch {
         return "index";
     }
 
-    @GetMapping("/roulett")
+    @GetMapping("/roulette")
     public String here(){
-        return "roulett";
+        return "roulette";
     }
 
-    @PostMapping("/roulett")
+    @PostMapping("/roulette")
     public String from(ModelMap modelMap, @RequestParam("from") String name) throws MalformedURLException {
         if (name.isBlank()){
             return "index";
@@ -79,6 +76,6 @@ public class Lunch {
 
 
         modelMap.addAttribute("from", name);
-        return "roulett";
+        return "roulette";
     }
 }
