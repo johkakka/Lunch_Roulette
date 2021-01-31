@@ -68,10 +68,7 @@ public class Lunch {
             ObjectMapper objectMapper = new ObjectMapper();
             GeometryModel model = objectMapper.readValue(geoUrl, GeometryModel.class);
 
-            GeometryResult result = model.getTopResult();
-            Geometry geometry = result.getGeometry();
-            Location location = geometry.getLocation();
-            geoLoc = location.get();
+            geoLoc = model.getTopResult().getGeometry().getLocation().get();
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -81,7 +78,7 @@ public class Lunch {
         }
 
 
-        modelMap.addAttribute("from", geoLoc[0]);
+        modelMap.addAttribute("from", name);
         return "roulett";
     }
 }
