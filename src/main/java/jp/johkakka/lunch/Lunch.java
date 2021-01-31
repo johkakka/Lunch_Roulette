@@ -6,7 +6,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -28,7 +33,7 @@ public class Lunch {
     }
 
     @PostMapping("/roulett")
-    public String from(ModelMap modelMap, @RequestParam("from") String name){
+    public String from(ModelMap modelMap, @RequestParam("from") String name) throws MalformedURLException {
         if (name.isBlank()){
             return "index";
         }
@@ -49,8 +54,28 @@ public class Lunch {
             return "error";
         }
 
-        String geoUrl = "https://maps.googleapis.com/maps/api/geocode/json?address="+name+"&region=jp&key="+lines.get(0);
+        String geoUrlPath = "https://maps.googleapis.com/maps/api/geocode/json?address="+name+"&region=jp&key="+lines.get(0);
 
+        String geoJson = "";
+
+        try {
+            URL geoUrl = new URL(geoUrlPath);
+            InputStream is = geoUrl.openStream();
+            InputStreamReader isr = new InputStreamReader(is, StandardCharsets.UTF_8);
+            BufferedReader br = new BufferedReader(isr);
+
+            String temp;
+
+            while ((temp = br.readLine()) != null){
+                geoJson = geoJson + temp;
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            String m = e.toString();
+            modelMap.addAttribute("message", m);
+            return "error";
+        }
 
 
         modelMap.addAttribute("from", name);
