@@ -74,8 +74,8 @@ public class Lunch {
             return "error";
         }
 
-
         modelMap.addAttribute("from", name);
+        modelMap.addAttribute("location", "(" + geoLoc[0] + "," + geoLoc[1] + ")");
         return "roulette";
     }
 }
