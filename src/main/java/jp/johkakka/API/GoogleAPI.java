@@ -56,5 +56,9 @@ public abstract class GoogleAPI {
     }
 
     abstract public Object result();
+
+    public ArrayList<String> getErrorMessages() {
+        return errorMessages;
+    }
 }
 
