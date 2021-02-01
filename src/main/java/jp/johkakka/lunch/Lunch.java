@@ -1,7 +1,7 @@
 package jp.johkakka.lunch;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import jp.johkakka.API.GeometryModel;
+import jp.johkakka.JSON.GeometryModel;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,4 +1,4 @@
-package jp.johkakka.API;
+package jp.johkakka.JSON;
 
 import java.util.List;
 
