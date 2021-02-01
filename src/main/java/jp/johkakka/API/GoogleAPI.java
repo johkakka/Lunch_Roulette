@@ -37,7 +37,7 @@ public abstract class GoogleAPI {
         return new URL(path);
     }
 
-    private String getKey(){
+    protected String getKey(){
         List<String> lines = new ArrayList<>();
         try {
             lines = Files.lines(Paths.get("internal"), StandardCharsets.UTF_8).collect(Collectors.toList());
