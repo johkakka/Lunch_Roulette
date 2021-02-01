@@ -1,7 +1,5 @@
 package jp.johkakka.API;
 
-import org.springframework.ui.ModelMap;
-
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
