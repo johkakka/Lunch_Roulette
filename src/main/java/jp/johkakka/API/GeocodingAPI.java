@@ -31,6 +31,9 @@ public class GeocodingAPI extends GoogleAPI{
         } catch (IOException e) {
             e.printStackTrace();
             errorMessages.add(e.toString());
+        } catch (NullPointerException e){
+            e.printStackTrace();
+            errorMessages.add("not found location");
         }
         return geoLoc;
     }
