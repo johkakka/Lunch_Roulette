@@ -6,14 +6,14 @@ import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PlaceModel {
-    private List<PlaceResult> results;
+    private List<Place> results;
     private String status;
 
-    public List<PlaceResult> getResults() {
+    public List<Place> getResults() {
         return results;
     }
 
-    public PlaceResult getTopResult(){
+    public Place getTopResult(){
         if (results.isEmpty()){
             return null;
         } else {

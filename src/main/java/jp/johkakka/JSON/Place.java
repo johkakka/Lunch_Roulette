@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class PlaceResult {
+public class Place {
     private String name;
     @JsonProperty("opening_hours")
     private OpeningHour openingHours;
