@@ -1,22 +1,13 @@
 package jp.johkakka.lunch;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import jp.johkakka.JSON.GeometryModel;
+import jp.johkakka.API.GeocodingAPI;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.io.IOException;
 import java.net.MalformedURLException;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Controller
 public class Lunch {
@@ -37,40 +28,16 @@ public class Lunch {
             return "index";
         }
 
-        List<String> lines = new ArrayList<>();
-        try {
-            lines = Files.lines(Paths.get("internal"), StandardCharsets.UTF_8).collect(Collectors.toList());
-        } catch (IOException e) {
-            e.printStackTrace();
-            String m = e.toString();
-            modelMap.addAttribute("message", m);
-            return "error";
-        }
-
-        if (lines.isEmpty()){
-            String m = "APIキーが見つかりません";
-            modelMap.addAttribute("message", m);
-            return "error";
-        }
-
-        String geoUrlPath = "https://maps.googleapis.com/maps/api/geocode/json?address="+name+"&region=jp&key="+lines.get(0);
+        GeocodingAPI geocoding = new GeocodingAPI();
 
         //Get from Geocoding API
-        String geoJson = "";
-        double[] geoLoc = new double[]{Double.NaN, Double.NaN};
-        try {
-            URL geoUrl = new URL(geoUrlPath);
-
-            //to Java class
-            ObjectMapper objectMapper = new ObjectMapper();
-            GeometryModel model = objectMapper.readValue(geoUrl, GeometryModel.class);
-
-            geoLoc = model.getTopResult().getGeometry().getLocation().get();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-            String m = e.toString();
-            modelMap.addAttribute("message", m);
+        double[] geoLoc = geocoding.result(name);
+        if (geocoding.getErrorMessages().size() > 0){
+            StringBuilder message = new StringBuilder();
+            for (String s : geocoding.getErrorMessages()) {
+                message.append(s).append("\n");
+            }
+            modelMap.addAttribute("message", new String(message));
             return "error";
         }
 

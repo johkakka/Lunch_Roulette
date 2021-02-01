@@ -43,7 +43,7 @@ public abstract class GoogleAPI {
             lines = Files.lines(Paths.get("internal"), StandardCharsets.UTF_8).collect(Collectors.toList());
         } catch (IOException e) {
             e.printStackTrace();
-            errorMessages.add(e.getMessage());
+            errorMessages.add(e.toString());
             return null;
         }
 
