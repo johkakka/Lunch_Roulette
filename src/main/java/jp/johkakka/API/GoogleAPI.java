@@ -55,7 +55,7 @@ public abstract class GoogleAPI {
         return lines.get(0);
     }
 
-    abstract public Object result();
+    abstract public Object result(String s);
 
     public ArrayList<String> getErrorMessages() {
         return errorMessages;
