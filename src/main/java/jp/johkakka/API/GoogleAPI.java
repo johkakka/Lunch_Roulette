@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 
 public abstract class GoogleAPI {
     private String path = "";
-    private final ArrayList<String> errorMessages;
+    protected final ArrayList<String> errorMessages;
 
     GoogleAPI(){
         this(new ArrayList<>());
