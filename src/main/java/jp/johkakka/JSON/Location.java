@@ -21,4 +21,8 @@ public class Location {
         return new double[]{this.getLat(), this.getLng()};
     }
 
+    @Override
+    public String toString() {
+        return latString + "," + lngString;
+    }
 }
