@@ -15,16 +15,14 @@ public class GeocodingAPI extends GoogleAPI{
         if (key == null){
             return geoLoc;
         }
-        String geoUrlPath = "https://maps.googleapis.com/maps/api/geocode/json?address="+name+"&region=jp&key="+key;
+        super.setPath("https://maps.googleapis.com/maps/api/geocode/json?address="+name+"&region=jp&key="+key);
 
         //Get from Geocoding API
         String geoJson = "";
         try {
-            URL geoUrl = new URL(geoUrlPath);
-
             //to Java class
             ObjectMapper objectMapper = new ObjectMapper();
-            GeometryModel model = objectMapper.readValue(geoUrl, GeometryModel.class);
+            GeometryModel model = objectMapper.readValue(super.getURL(), GeometryModel.class);
 
             geoLoc = model.getTopResult().getGeometry().getLocation().get();
 
