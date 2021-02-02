@@ -18,7 +18,6 @@ public class GeocodingAPI extends GoogleAPI{
         super.setPath("https://maps.googleapis.com/maps/api/geocode/json?address="+name+"&region=jp&key="+key);
 
         //Get from Geocoding API
-        String geoJson = "";
         try {
             //to Java class
             ObjectMapper objectMapper = new ObjectMapper();

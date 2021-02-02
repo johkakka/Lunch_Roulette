@@ -1,7 +1,9 @@
 package jp.johkakka.lunch;
 
 import jp.johkakka.API.GeocodingAPI;
+import jp.johkakka.API.PlaceAPI;
 import jp.johkakka.JSON.Location;
+import jp.johkakka.JSON.Place;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -48,6 +50,25 @@ public class Lunch {
 
         modelMap.addAttribute("from", name);
         modelMap.addAttribute("location", "(" + location + ")");
+
+        //Get from Place API
+        PlaceAPI placeAPI = new PlaceAPI();
+        Place place = placeAPI.result(location.toString());
+
+        if (placeAPI.getErrorMessages().size() > 0) {
+            StringBuilder message = new StringBuilder();
+            for (String s : placeAPI.getErrorMessages()) {
+                message.append(s).append("\n");
+            }
+            modelMap.addAttribute("message", new String(message));
+            return "error";
+        } else if (place == null) {
+            String message = "Not found place result";
+            modelMap.addAttribute("message", message);
+            return "error";
+        }
+
+        modelMap.addAttribute("to", place.getName());
 
         return "roulette";
     }
