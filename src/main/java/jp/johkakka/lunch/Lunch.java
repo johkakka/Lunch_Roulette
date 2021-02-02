@@ -1,6 +1,7 @@
 package jp.johkakka.lunch;
 
 import jp.johkakka.API.GeocodingAPI;
+import jp.johkakka.JSON.Location;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,7 +32,7 @@ public class Lunch {
         GeocodingAPI geocoding = new GeocodingAPI();
 
         //Get from Geocoding API
-        double[] geoLoc = geocoding.result(name);
+        Location location = geocoding.result(name);
         if (geocoding.getErrorMessages().size() > 0){
             StringBuilder message = new StringBuilder();
             for (String s : geocoding.getErrorMessages()) {
@@ -39,10 +40,15 @@ public class Lunch {
             }
             modelMap.addAttribute("message", new String(message));
             return "error";
+        } else if (location == null){
+            String message = "Not found location result";
+            modelMap.addAttribute("message", message);
+            return "error";
         }
 
         modelMap.addAttribute("from", name);
-        modelMap.addAttribute("location", "(" + geoLoc[0] + "," + geoLoc[1] + ")");
+        modelMap.addAttribute("location", "(" + location + ")");
+
         return "roulette";
     }
 }

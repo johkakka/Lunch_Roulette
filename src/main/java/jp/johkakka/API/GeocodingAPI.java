@@ -2,18 +2,18 @@ package jp.johkakka.API;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jp.johkakka.JSON.GeometryModel;
+import jp.johkakka.JSON.Location;
 
 import java.io.IOException;
-import java.net.URL;
 
 public class GeocodingAPI extends GoogleAPI{
 
-    public double[] result(String name){
-        double[] geoLoc = new double[]{Double.NaN, Double.NaN};
+    public Location result(String name){
+        Location location = null;
 
         String key = super.getKey();
         if (key == null){
-            return geoLoc;
+            return location;
         }
         super.setPath("https://maps.googleapis.com/maps/api/geocode/json?address="+name+"&region=jp&key="+key);
 
@@ -24,7 +24,7 @@ public class GeocodingAPI extends GoogleAPI{
             ObjectMapper objectMapper = new ObjectMapper();
             GeometryModel model = objectMapper.readValue(super.getURL(), GeometryModel.class);
 
-            geoLoc = model.getTopResult().getGeometry().getLocation().get();
+            location = model.getTopResult().getGeometry().getLocation();
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -33,6 +33,6 @@ public class GeocodingAPI extends GoogleAPI{
             e.printStackTrace();
             errorMessages.add("not found location");
         }
-        return geoLoc;
+        return location;
     }
 }
