@@ -7,13 +7,13 @@ import java.util.List;
 @JsonIgnoreProperties (ignoreUnknown = true)
 public class Geometry {
     private Location location;
-    private List<String> types;
+    //private List<String> types;
 
     public Location getLocation() {
         return location;
     }
 
-    public List<String> getTypes() {
-        return types;
-    }
+//    public List<String> getTypes() {
+//        return types;
+//    }
 }
