@@ -53,7 +53,7 @@ public class Lunch {
 
         //Get from Place API
         PlaceAPI placeAPI = new PlaceAPI();
-        Place place = placeAPI.result(location.toString());
+        Place place = new Roulette().result(placeAPI, location);
 
         if (placeAPI.getErrorMessages().size() > 0) {
             StringBuilder message = new StringBuilder();
