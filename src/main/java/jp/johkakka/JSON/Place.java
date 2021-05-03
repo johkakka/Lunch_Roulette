@@ -7,12 +7,17 @@ import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Place {
+    private Geometry geometry;
     private String name;
     @JsonProperty("opening_hours")
     private OpeningHour openingHours;
     private List<Photo> photos;
     private String rating;
     private String vicinity;
+
+    public Geometry getGeometry() {
+        return geometry;
+    }
 
     public String getName() {
         return name;
@@ -39,6 +44,9 @@ public class Place {
     }
 
     public double getRatingDouble() {
+        if (rating == null){
+            return 2.0;
+        }
         return Double.parseDouble(rating);
     }
 
