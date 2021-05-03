@@ -1,7 +1,10 @@
 package jp.johkakka.JSON;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.List;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class GeometryModel {
     private List<GeometryResult> results;
     private String status;

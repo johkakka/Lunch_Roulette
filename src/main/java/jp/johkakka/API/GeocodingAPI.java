@@ -23,7 +23,12 @@ public class GeocodingAPI extends GoogleAPI{
             ObjectMapper objectMapper = new ObjectMapper();
             GeometryModel model = objectMapper.readValue(super.getURL(), GeometryModel.class);
 
-            location = model.getTopResult().getGeometry().getLocation();
+            if (model.isOk()){
+                location = model.getTopResult().getGeometry().getLocation();
+            } else {
+                errorMessages.add(model.getStatus());
+                return null;
+            }
 
         } catch (IOException e) {
             e.printStackTrace();

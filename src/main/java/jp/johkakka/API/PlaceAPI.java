@@ -33,6 +33,10 @@ public class PlaceAPI extends GoogleAPI{
         try {
             ObjectMapper objectMapper = new ObjectMapper();
             placeModel = objectMapper.readValue(super.getURL(), PlaceModel.class);
+            if (!placeModel.isOK()){
+                System.err.println(placeModel.getStatus());
+                errorMessages.add(placeModel.getStatus());
+            }
 
         } catch (IOException e) {
             e.printStackTrace();
