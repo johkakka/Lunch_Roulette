@@ -34,6 +34,8 @@ public class Lunch {
         GeocodingAPI geocoding = new GeocodingAPI();
 
         //Get from Geocoding API
+        name = name.replace(" ", "+")
+                .replace("　", "+");
         Location location = geocoding.result(name);
         if (geocoding.getErrorMessages().size() > 0){
             StringBuilder message = new StringBuilder();
