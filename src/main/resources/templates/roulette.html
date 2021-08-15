@@ -1,18 +1,57 @@
 <!DOCTYPE html>
-<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org" class="h-100">
 <head>
     <meta charset="UTF-8">
     <script src="js/bootstrap.js"></script>
     <script src="js/jquery.js"></script>
-    <link rel="stylesheet" href="css/bootstrap.css"/>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <meta name="theme-color" content="#7952b3">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>飯どうするーれっと</title>
-</head>
-<body>
-<h1>飯どうするーれっと</h1>
-<h1><span th:text="${from}"></span><span th:text="${location}"></span>から</h1><br>
-<h1>結果：<span th:text="${to}"></span></h1>
 
-<a class="btn btn-primary btn-lg" href="/">トップへ</a>
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+
+    <link rel="stylesheet" href="css/cover.css"/>
+</head>
+
+<body class="d-flex h-100 text-center text-white bg-dark">
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <header class="mb-auto">
+        <div>
+            <h3 class="float-md-start mb-0">飯どうするーれっと</h3>
+            <nav class="nav nav-masthead justify-content-center float-md-end">
+                <a class="nav-link active" aria-current="page" href="/">Roulette</a>
+                <a class="nav-link" href="#">Credit</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="px-3">
+        <h1><span th:text="${from}"></span><span th:text="${location}"></span>から</h1><br>
+        <h1>結果：<span th:text="${to}"></span></h1>
+        <p class="g-map">
+            <iframe th:src="'https://maps.google.co.jp/maps?output=embed&q='+${to}+'+'+${vin}"></iframe>
+        </p>
+        <a class="btn btn-primary btn-lg" href="/">トップへ</a>
+    </main>
+
+    <footer class="mt-auto text-white-50">
+        <p>Cover template for <a href="/" class="text-white">lunch roulette</a>, by <a href="https://twitter.com/Joh_Kakka" class="text-white">johkakka</a>.</p>
+    </footer>
+</div>
 </body>
 </html>

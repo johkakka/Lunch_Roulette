@@ -71,6 +71,7 @@ public class Lunch {
         }
 
         modelMap.addAttribute("to", place.getName());
+        modelMap.addAttribute("vin", place.getVicinity());
 
         return "roulette";
     }

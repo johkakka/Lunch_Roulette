@@ -55,3 +55,17 @@ body {
 .px-3 h4 {
     color: #aaa;
 }
+
+.g-map {
+    height: 0;
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    position: relative;
+}
+.g-map iframe {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+}
