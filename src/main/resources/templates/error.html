@@ -1,15 +1,80 @@
 <!DOCTYPE html>
-<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org" class="h-100">
 <head>
     <meta charset="UTF-8">
     <script src="js/bootstrap.js"></script>
     <script src="js/jquery.js"></script>
-    <link rel="stylesheet" href="css/bootstrap.css"/>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <meta name="theme-color" content="#7952b3">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>飯どうするーれっと - エラー</title>
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+
+    <link rel="stylesheet" href="css/cover.css"/>
+
+
 </head>
-<body>
-<h1>おっと…</h1>
-エラーメッセージ:<span th:text="${message}"></span>
+
+<body class="d-flex h-100 text-center text-white bg-dark">
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <header class="mb-auto">
+        <div>
+            <h3 class="float-md-start mb-0">飯どうするーれっと</h3>
+            <nav class="nav nav-masthead justify-content-center float-md-end">
+                <a class="nav-link active" aria-current="page" href="/">Roulette</a>
+                <a class="nav-link" href="#">Credit</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="px-3">
+        <p>
+            <h1>おっと…何らかの不具合があったみたいです。</h1>
+        </p>
+        <div class="card text-dark result-card bg-warning text-start">
+            <div class="card-header">
+                エラーメッセージ
+            </div>
+            <div class="card-body">
+                <span th:text="${message}"></span>
+            </div>
+        </div>
+        <p></p>
+        <div class="card text-dark result-card text-start">
+            <div class="card-body">
+                <div class="text-start">ヒント：次の原因が考えられます。</div>
+                <ul>
+                    <li>検索する場所が見つからなかった。</li>
+                    <li>検索した場所の付近で開店中のお店が見つからなかった。</li>
+                    <li>サーバー内部の問題。</li>
+                </ul>
+            </div>
+        </div>
+        <p></p>
+        <p>
+            <a id="here" class="btn btn-primary btn-block btn-lg" href="/">トップへ</a>
+        </p>
+
+    </main>
+
+    <footer class="mt-auto text-white-50">
+        <p><a href="/" class="text-white">Lunch Roulette</a>, Copyright © 2021 <a href="https://twitter.com/Joh_Kakka" class="text-white">johkakka</a> All Rights Reserved.</p>
+    </footer>
+</div>
 </body>
 </html>
