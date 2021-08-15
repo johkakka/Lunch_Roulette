@@ -15,6 +15,8 @@ public class GeocodingAPI extends GoogleAPI{
         if (key == null){
             return location;
         }
+        name = name.replace(" ", "+")
+                .replace("　", "+");
         super.setPath("https://maps.googleapis.com/maps/api/geocode/json?address="+name+"&region=jp&key="+key);
 
         //Get from Geocoding API

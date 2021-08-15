@@ -34,8 +34,6 @@ public class Lunch {
         GeocodingAPI geocoding = new GeocodingAPI();
 
         //Get from Geocoding API
-        name = name.replace(" ", "+")
-                .replace("　", "+");
         Location location = geocoding.result(name);
         if (geocoding.getErrorMessages().size() > 0){
             StringBuilder message = new StringBuilder();
@@ -51,7 +49,8 @@ public class Lunch {
         }
 
         modelMap.addAttribute("from", name);
-        modelMap.addAttribute("location", "(" + location + ")");
+        String[] locString = location.getStrings();
+        modelMap.addAttribute("location", "(" + locString[0] + ", " + locString[1] + ")");
 
         //Get from Place API
         PlaceAPI placeAPI = new PlaceAPI();
@@ -71,6 +70,10 @@ public class Lunch {
         }
 
         modelMap.addAttribute("to", place.getName());
+        modelMap.addAttribute("vin", place.getVicinity());
+
+        modelMap.addAttribute("star", "<span class=\"star5_rating\" data-rate=\""+place.getRating()+"\"></span>");
+        modelMap.addAttribute("rate", place.getRating());
 
         return "roulette";
     }

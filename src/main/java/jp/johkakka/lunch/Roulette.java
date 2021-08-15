@@ -4,6 +4,7 @@ import jp.johkakka.API.PlaceAPI;
 import jp.johkakka.JSON.Location;
 import jp.johkakka.JSON.Place;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static java.lang.Math.*;
@@ -12,8 +13,18 @@ public class Roulette {
     private final int MAX_DISTANCE = 1000;
 
     public Place result(PlaceAPI placeAPI, Location location){
-        List<Place> places = placeAPI.result(location.toString(), MAX_DISTANCE);
-        if (places == null || places.isEmpty()) {
+        List<Place> _ps = placeAPI.result(location.toString(), MAX_DISTANCE);
+        if (_ps == null) {
+            return null;
+        }
+
+        List<Place> places = new ArrayList<>();
+        for (Place place: _ps){
+            if (place.getOpeningHours() == null) places.add(place);
+            else if (place.getOpeningHours().isOpenNow()) places.add(place);
+        }
+
+        if(places.isEmpty()){
             return null;
         }
 
