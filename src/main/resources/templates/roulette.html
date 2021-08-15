@@ -44,17 +44,24 @@
         <p>
             <h1>「<span th:text="${from}"></span> <span th:text="${location}"></span>」から</h1>
         </p>
-        <p>
-            <h1>結果：<span th:text="${to}"></span></h1>
-        </p>
-        <p class="g-map">
-            <iframe th:src="'https://maps.google.co.jp/maps?output=embed&q='+${to}+'+'+${vin}"></iframe>
-        </p>
+        <div class="card text-dark result-card">
+            <div class="card-header">
+                結果
+            </div>
+            <div class="card-body">
+                <p>
+                    <h1><span th:text="${to}"></span></h1>
+                </p>
+                <p class="g-map">
+                    <iframe th:src="'https://maps.google.co.jp/maps?output=embed&q='+${to}+'+'+${vin}"></iframe>
+                </p>
+            </div>
+        </div>
         <a class="btn btn-primary btn-lg" href="/">トップへ</a>
     </main>
 
     <footer class="mt-auto text-white-50">
-        <p>Cover template for <a href="/" class="text-white">lunch roulette</a>, by <a href="https://twitter.com/Joh_Kakka" class="text-white">johkakka</a>.</p>
+        <p><a href="/" class="text-white">Lunch Roulette</a>, Copyright © 2021 <a href="https://twitter.com/Joh_Kakka" class="text-white">johkakka</a> All Rights Reserved.</p>
     </footer>
 </div>
 </body>
