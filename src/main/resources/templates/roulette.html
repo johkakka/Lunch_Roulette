@@ -41,8 +41,12 @@
     </header>
 
     <main class="px-3">
-        <h1><span th:text="${from}"></span><span th:text="${location}"></span>から</h1><br>
-        <h1>結果：<span th:text="${to}"></span></h1>
+        <p>
+            <h1>「<span th:text="${from}"></span> <span th:text="${location}"></span>」から</h1>
+        </p>
+        <p>
+            <h1>結果：<span th:text="${to}"></span></h1>
+        </p>
         <p class="g-map">
             <iframe th:src="'https://maps.google.co.jp/maps?output=embed&q='+${to}+'+'+${vin}"></iframe>
         </p>
