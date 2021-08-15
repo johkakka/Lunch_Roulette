@@ -72,6 +72,9 @@ public class Lunch {
         modelMap.addAttribute("to", place.getName());
         modelMap.addAttribute("vin", place.getVicinity());
 
+        modelMap.addAttribute("star", "<span class=\"star5_rating\" data-rate=\""+place.getRating()+"\"></span>");
+        modelMap.addAttribute("rate", place.getRating());
+
         return "roulette";
     }
 }

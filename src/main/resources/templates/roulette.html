@@ -26,6 +26,7 @@
     </style>
 
     <link rel="stylesheet" href="css/cover.css"/>
+    <link rel="stylesheet" href="css/stars.css"/>
 </head>
 
 <body class="d-flex h-100 text-center text-white bg-dark">
@@ -52,11 +53,16 @@
                 <p>
                     <h1><span th:text="${to}"></span></h1>
                 </p>
+                <p>
+                    <span th:text="${rate}"></span>
+                    <span th:utext="${star}"></span>
+                </p>
                 <p class="g-map">
                     <iframe th:src="'https://maps.google.co.jp/maps?output=embed&q='+${to}+'+'+${vin}"></iframe>
                 </p>
             </div>
         </div>
+        <p></p>
         <a class="btn btn-primary btn-lg" href="/">トップへ</a>
     </main>
 
