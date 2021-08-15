@@ -21,6 +21,10 @@ public class Location {
         return new double[]{this.getLat(), this.getLng()};
     }
 
+    public String[] getStrings(){
+        return new String[]{String.format("%.3f", this.getLat()), String.format("%.3f", this.getLng())};
+    }
+
     @Override
     public String toString() {
         return latString + "," + lngString;

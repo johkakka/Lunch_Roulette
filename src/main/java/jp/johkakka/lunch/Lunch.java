@@ -49,7 +49,8 @@ public class Lunch {
         }
 
         modelMap.addAttribute("from", name);
-        modelMap.addAttribute("location", "(" + location + ")");
+        String[] locString = location.getStrings();
+        modelMap.addAttribute("location", "(" + locString[0] + ", " + locString[1] + ")");
 
         //Get from Place API
         PlaceAPI placeAPI = new PlaceAPI();
