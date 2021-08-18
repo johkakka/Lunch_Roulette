@@ -16,6 +16,6 @@ public class LunchApplication extends SpringBootServletInitializer {
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(SpringApplication.class);
+        return application.sources(LunchApplication.class);
     }
 }
