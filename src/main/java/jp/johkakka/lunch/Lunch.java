@@ -25,6 +25,11 @@ public class Lunch {
         return "redirect:index";
     }
 
+    @GetMapping("/credit")
+    public String credit(){
+        return "credit";
+    }
+
     @PostMapping("/roulette")
     public String from(ModelMap modelMap, @RequestParam("from") String name) throws MalformedURLException {
         if (name == null || name.isBlank()){
