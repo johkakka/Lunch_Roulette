@@ -13,7 +13,7 @@ function getPosition() {
         // 取得成功した場合
         function (position) {
 
-            alert("緯度:" + position.coords.latitude + ",経度" + position.coords.longitude);
+            // alert("緯度:" + position.coords.latitude + ",経度" + position.coords.longitude);
             document.forms.loc.point.value=position.coords.latitude + "," + position.coords.longitude;
             document.forms.loc.from.value="現在地"
             var f = document.getElementById("loc")
