@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
     <meta name="theme-color" content="#7952b3">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>飯どうするーれっと - 結果</title>
+    <title>飯どうするーれっと</title>
 
     <style>
         .bd-placeholder-img {
@@ -50,15 +50,16 @@
         <p class="lead d-none d-sm-block">お店が決まらない？任せてください。あなたの近所で私が適当にいいお店を決めてあげましょう。下のフォームから探したい地名を入力して「ここから」を押してください。</p>
 
         <p>
-            <form th:action="roulette" th:method="post">
+            <form th:action="roulette" th:method="post" name="loc" id="loc">
                 <input class="form-control input-lg" type="text" name="from" value="" placeholder="例）梅田　茶屋町"/>
+                <input type="hidden" name="point" value="">
                 <p></p>
                 <button class="btn btn-primary btn-lg" type="submit">ここから</button>
             </form>
         </p>
 
         <p>
-            <a id="here" class="btn btn-secondary btn-block btn-lg disabled" th:href="@{/}">現在地から</a>
+            <button id="here" class="btn btn-secondary btn-block btn-lg text-white">現在地から</button>
             <script src="js/geolocation.js"></script>
         </p>
     </main>

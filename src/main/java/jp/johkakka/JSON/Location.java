@@ -3,6 +3,13 @@ package jp.johkakka.JSON;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Location {
+    public Location (String latString, String lngString){
+        this.latString = latString;
+        this.lngString = lngString;
+    }
+
+    public Location(){}
+
     @JsonProperty("lat")
     private String latString;
 
