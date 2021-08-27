@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.net.MalformedURLException;
-import java.util.Optional;
 
 @Controller
 public class Lunch {
@@ -34,7 +33,7 @@ public class Lunch {
     @PostMapping("/roulette")
     public String from(ModelMap modelMap,
                        @RequestParam("from") String name,
-                       @RequestParam("point") Optional<String> loc)
+                       @RequestParam("point") String loc)
             throws MalformedURLException {
         if (name == null || name.isBlank()){
             return "index";
@@ -42,7 +41,7 @@ public class Lunch {
 
         Location location;
         String[] locString;
-        if (loc.isEmpty()) {
+        if (loc.equals("")) {
             GeocodingAPI geocoding = new GeocodingAPI();
 
             //Get from Geocoding API
@@ -62,7 +61,7 @@ public class Lunch {
 
             locString = location.getStrings();
         } else {
-            locString = loc.get().split(",");
+            locString = loc.split(",");
             location = new Location(locString[0], locString[1]);
         }
 
