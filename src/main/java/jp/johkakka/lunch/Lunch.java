@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.net.MalformedURLException;
+import java.util.Optional;
 
 @Controller
 public class Lunch {
@@ -31,30 +32,41 @@ public class Lunch {
     }
 
     @PostMapping("/roulette")
-    public String from(ModelMap modelMap, @RequestParam("from") String name) throws MalformedURLException {
+    public String from(ModelMap modelMap,
+                       @RequestParam("from") String name,
+                       @RequestParam("point") Optional<String> loc)
+            throws MalformedURLException {
         if (name == null || name.isBlank()){
             return "index";
         }
 
-        GeocodingAPI geocoding = new GeocodingAPI();
+        Location location;
+        String[] locString;
+        if (loc.isEmpty()) {
+            GeocodingAPI geocoding = new GeocodingAPI();
 
-        //Get from Geocoding API
-        Location location = geocoding.result(name);
-        if (geocoding.getErrorMessages().size() > 0){
-            StringBuilder message = new StringBuilder();
-            for (String s : geocoding.getErrorMessages()) {
-                message.append(s).append("\n");
+            //Get from Geocoding API
+            location = geocoding.result(name);
+            if (geocoding.getErrorMessages().size() > 0) {
+                StringBuilder message = new StringBuilder();
+                for (String s : geocoding.getErrorMessages()) {
+                    message.append(s).append("\n");
+                }
+                modelMap.addAttribute("message", new String(message));
+                return "error";
+            } else if (location == null) {
+                String message = "Not found location result";
+                modelMap.addAttribute("message", message);
+                return "error";
             }
-            modelMap.addAttribute("message", new String(message));
-            return "error";
-        } else if (location == null){
-            String message = "Not found location result";
-            modelMap.addAttribute("message", message);
-            return "error";
+
+            locString = location.getStrings();
+        } else {
+            locString = loc.get().split(",");
+            location = new Location(locString[0], locString[1]);
         }
 
         modelMap.addAttribute("from", name);
-        String[] locString = location.getStrings();
         modelMap.addAttribute("location", "(" + locString[0] + ", " + locString[1] + ")");
 
         //Get from Place API
