@@ -45,7 +45,7 @@
 
     <main class="px-3">
         <p>
-            <h1>「<span th:text="${from}"></span> <span th:text="${location}"></span>」から</h1>
+            <h2>「<span th:text="${from}"></span> <span th:text="${location}"></span>」から</h2>
         </p>
         <div class="card text-dark result-card">
             <div class="card-header">
@@ -53,13 +53,9 @@
             </div>
             <div class="card-body">
                 <p>
-                    <h1><span th:text="${to}"></span></h1>
-                </p>
-                <p>
+                    <h2><span th:text="${to}"></span></h2>
                     <span th:text="${rate}"></span>
-                    <span th:utext="${star}"></span>
-                </p>
-                <p>
+                    <span th:utext="${star}"></span><br>
                     <span th:utext="${tweet}"></span>
                 </p>
                 <p class="g-map">
