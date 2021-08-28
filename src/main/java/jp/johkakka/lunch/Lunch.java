@@ -92,12 +92,25 @@ public class Lunch {
             return "error";
         }
 
-        modelMap.addAttribute("to", place.getName());
+        modelMap.addAttribute("to", sanitize(place.getName()));
         modelMap.addAttribute("vin", place.getVicinity());
 
         modelMap.addAttribute("star", "<span class=\"star5_rating\" data-rate=\""+place.getRating()+"\"></span>");
         modelMap.addAttribute("rate", place.getRating());
 
+        String tw = "<a href=\"https://twitter.com/share\" class=\"twitter-share-button\" data-url=\"https://johkakka.dev/lunch/\" " +
+                "data-text=\"【\uD83C\uDFAFルーレット結果】\n"
+                +sanitize(name+"(" + locString[0] + ", " + locString[1] + ")")+"から……\n\n"
+                +"「"+sanitize(place.getName())+"」が選ばれました！\n\n"+
+                "#飯どうするーれっと"+"\">Tweet</a>";
+
+        modelMap.addAttribute("tweet", tw);
+
         return "roulette";
+    }
+
+    private String sanitize(String s){
+        String r = s.replace("&", "&amp;").replace("\"", "&quot;").replace("<", "&lt;").replace(">", "&gt;").replace("'", "&#39;");
+        return r;
     }
 }
