@@ -61,8 +61,9 @@ public class Lunch {
 
             locString = location.getStrings();
         } else {
-            locString = loc.split(",");
-            location = new Location(locString[0], locString[1]);
+            String[] l = loc.split(",");
+            location = new Location(l[0], l[1]);
+            locString = location.getStrings();
         }
 
         modelMap.addAttribute("from", name);
