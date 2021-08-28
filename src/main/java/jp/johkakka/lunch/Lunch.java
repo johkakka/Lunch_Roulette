@@ -72,7 +72,7 @@ public class Lunch {
             locString = location.getStrings();
         }
 
-        modelMap.addAttribute("from", name);
+        modelMap.addAttribute("from", sanitize(name));
         modelMap.addAttribute("location", "(" + locString[0] + ", " + locString[1] + ")");
 
         //Get from Place API
@@ -100,7 +100,7 @@ public class Lunch {
 
         String tw = "<a href=\"https://twitter.com/share\" class=\"twitter-share-button\" data-url=\"https://johkakka.dev/lunch/\" " +
                 "data-text=\"【\uD83C\uDFAFルーレット結果】\n"
-                +sanitize(name+"(" + locString[0] + ", " + locString[1] + ")")+"から……\n\n"
+                +sanitize(name)+"(" + locString[0] + ", " + locString[1] + ")から……\n\n"
                 +"「"+sanitize(place.getName())+"」が選ばれました！\n\n"+
                 "#飯どうするーれっと"+"\">Tweet</a>";
 
