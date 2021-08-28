@@ -30,6 +30,12 @@ public class Lunch {
         return "credit";
     }
 
+    @GetMapping("/more")
+    public String more(){
+        return "more";
+    }
+
+
     @PostMapping("/roulette")
     public String from(ModelMap modelMap,
                        @RequestParam("from") String name,
