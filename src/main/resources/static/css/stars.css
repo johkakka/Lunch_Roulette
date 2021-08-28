@@ -21,6 +21,7 @@
 }
 
 .star5_rating[data-rate="5.0"]:after{ width: 100%; } /* 星5 */
+.star5_rating[data-rate="5"]:after{ width: 100%; }
 .star5_rating[data-rate="4.9"]:after{ width: 98%; }
 .star5_rating[data-rate="4.8"]:after{ width: 96%; }
 .star5_rating[data-rate="4.7"]:after{ width: 94%; }
@@ -31,6 +32,7 @@
 .star5_rating[data-rate="4.2"]:after{ width: 84%; }
 .star5_rating[data-rate="4.1"]:after{ width: 82%; }
 .star5_rating[data-rate="4.0"]:after{ width: 80%; } /* 星4 */
+.star5_rating[data-rate="4"]:after{ width: 80%; }
 .star5_rating[data-rate="3.9"]:after{ width: 78%; }
 .star5_rating[data-rate="3.8"]:after{ width: 76%; }
 .star5_rating[data-rate="3.7"]:after{ width: 74%; }
@@ -41,6 +43,7 @@
 .star5_rating[data-rate="3.2"]:after{ width: 64%; }
 .star5_rating[data-rate="3.1"]:after{ width: 62%; }
 .star5_rating[data-rate="3.0"]:after{ width: 60%; } /* 星3 */
+.star5_rating[data-rate="3"]:after{ width: 60%; }
 .star5_rating[data-rate="2.9"]:after{ width: 58%; }
 .star5_rating[data-rate="2.8"]:after{ width: 56%; }
 .star5_rating[data-rate="2.7"]:after{ width: 54%; }
@@ -51,6 +54,7 @@
 .star5_rating[data-rate="2.2"]:after{ width: 44%; }
 .star5_rating[data-rate="2.1"]:after{ width: 42%; }
 .star5_rating[data-rate="2.0"]:after{ width: 40%; } /* 星2 */
+.star5_rating[data-rate="2"]:after{ width: 40%; }
 .star5_rating[data-rate="1.9"]:after{ width: 38%; }
 .star5_rating[data-rate="1.8"]:after{ width: 36%; }
 .star5_rating[data-rate="1.7"]:after{ width: 34%; }
@@ -61,6 +65,7 @@
 .star5_rating[data-rate="1.2"]:after{ width: 24%; }
 .star5_rating[data-rate="1.1"]:after{ width: 22%; }
 .star5_rating[data-rate="1.0"]:after{ width: 20%; } /* 星1 */
+.star5_rating[data-rate="1"]:after{ width: 20%; }
 .star5_rating[data-rate="0.9"]:after{ width: 18%; }
 .star5_rating[data-rate="0.8"]:after{ width: 16%; }
 .star5_rating[data-rate="0.7"]:after{ width: 14%; }
@@ -71,5 +76,6 @@
 .star5_rating[data-rate="0.2"]:after{ width: 4%; }
 .star5_rating[data-rate="0.1"]:after{ width: 2%; }
 .star5_rating[data-rate="0.0"]:after{ width: 0%; } /* 星0 */
+.star5_rating[data-rate="0"]:after{ width: 0%; } /* 星0 */
 .star5_rating[data-rate="null"]:after{ width: 0%; } /* null */
 .star5_rating[data-rate=""]:after{ width: 0%; } /* null */
