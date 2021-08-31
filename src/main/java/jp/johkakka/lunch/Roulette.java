@@ -32,8 +32,8 @@ public class Roulette {
         double sum = 0.0;
         for (int i = 0; i < places.size(); i++){
             Place place = places.get(i);
-            double score = place.getRatingDouble()*
-                    google_distance(place.getGeometry().getLocation(), location)/MAX_DISTANCE;
+            double score = place.getRatingDouble()/
+                    ((google_distance(place.getGeometry().getLocation(), location)/MAX_DISTANCE));
             sum += score;
             scores[i] = score;
         }

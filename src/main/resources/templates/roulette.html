@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <script src="js/bootstrap.js"></script>
     <script src="js/jquery.js"></script>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
     <meta name="theme-color" content="#7952b3">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -36,6 +37,7 @@
             <h3 class="float-md-start mb-0">飯どうするーれっと</h3>
             <nav class="nav nav-masthead justify-content-center float-md-end">
                 <a class="nav-link active" aria-current="page" th:href="@{/}">Roulette</a>
+                <a class="nav-link" th:href="@{/more}">More</a>
                 <a class="nav-link" th:href="@{/credit}">Credit</a>
             </nav>
         </div>
@@ -43,7 +45,7 @@
 
     <main class="px-3">
         <p>
-            <h1>「<span th:text="${from}"></span> <span th:text="${location}"></span>」から</h1>
+            <h2>「<span th:text="${from}"></span> <span th:text="${location}"></span>」から</h2>
         </p>
         <div class="card text-dark result-card">
             <div class="card-header">
@@ -51,11 +53,10 @@
             </div>
             <div class="card-body">
                 <p>
-                    <h1><span th:text="${to}"></span></h1>
-                </p>
-                <p>
+                    <h2><span th:text="${to}"></span></h2>
                     <span th:text="${rate}"></span>
-                    <span th:utext="${star}"></span>
+                    <span th:utext="${star}"></span><br>
+                    <span th:utext="${tweet}"></span>
                 </p>
                 <p class="g-map">
                     <iframe th:src="'https://maps.google.co.jp/maps?output=embed&q='+${to}+'+'+${vin}"></iframe>
@@ -64,6 +65,8 @@
         </div>
         <p></p>
         <a class="btn btn-primary btn-lg" th:href="@{/}">トップへ</a>
+        <p></p>
+        <a class="btn btn-secondary" th:href="@{/more}">選出アルゴリズムについて</a>
     </main>
 
     <footer class="mt-auto text-white-50">

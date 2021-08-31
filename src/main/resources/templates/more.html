@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="css/bootstrap.min.css"/>
   <meta name="theme-color" content="#7952b3">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>飯どうするーれっと - クレジット</title>
+  <title>飯どうするーれっと - 選出アルゴリズムについて</title>
 
   <style>
     .bd-placeholder-img {
@@ -37,32 +37,36 @@
       <h3 class="float-md-start mb-0">飯どうするーれっと</h3>
       <nav class="nav nav-masthead justify-content-center float-md-end">
         <a class="nav-link" aria-current="page" th:href="@{/}">Roulette</a>
-        <a class="nav-link" th:href="@{/more}">More</a>
-        <a class="nav-link active" th:href="@{/credit}">Credit</a>
+        <a class="nav-link active" th:href="@{/more}">More</a>
+        <a class="nav-link" th:href="@{/credit}">Credit</a>
       </nav>
     </div>
   </header>
 
   <main class="px-3">
     <p>
-    <h1>制作</h1>
+    <h1>さらに詳しく知る</h1>
     </p>
     <div class="card text-dark result-card text-start">
       <div class="card-header">
-        作者
+        選出アルゴリズムについて
       </div>
       <div class="card-body">
-        じょー閣下<br>
-        <ul>
-          <li>Twitter: <a href="https://twitter.com/Joh_Kakka">@Joh_Kakka</a></li>
-          <li>profile: <a href="https://joichiroamada.mystrikingly.com/">Strikinglyへ</a></li>
-        </ul>
+        <ol>
+          <li>まず、表示されるお店の候補を選びます。候補となりうるお店は以下の条件をすべて満たしているものです。</li>
+            <ul>
+              <li>Google Mapに登録されていること。</li>
+              <li>現在開店中である、もしくは、開店時間が不明であること。</li>
+              <li>入力された地点(もしくは現在地)の座標から1km圏内であること。</li>
+            </ul>
+          <li>候補のお店の中からランダムでお店を一つ選びます。ただし、ユーザーの皆様にとってよりよい提案をするために、以下の補正がかかります。</li>
+            <ul>
+              <li>お店の評価が高いほど選ばれやすくなります。例えば、評価2.5のお店と評価5のお店では後者のほうが2倍選ばれやすくなります。</li>
+              <li>お店が入力された地点(もしくは現在地)の座標から距離が近ければ近いほど選ばれやすくなります。例えば、500m離れたお店と1000m離れたお店では後者のほうが2倍選ばれやすくなります。</li>
+            </ul>
+          <li>以上の処理を終えて、選出されたお店を表示しています。</li>
+        </ol>
       </div>
-    </div>
-    <p></p>
-    <div class="card text-dark result-card text-start">
-      <div class="card-body">
-        <a class="twitter-timeline" data-height="100%" href="https://twitter.com/Joh_Kakka?ref_src=twsrc%5Etfw">Tweets by Joh_Kakka</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>      </div>
     </div>
     <p></p>
     <p>
